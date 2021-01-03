@@ -7,10 +7,16 @@ public class BaseTilemap : MonoBehaviour
 {
     // Start is called before the first frame update
     public Tilemap tilemap;
+
+    void Awake() { 
+
+    }
     void Start()
     {
-        Debug.Log("Start Class : " + this.GetType().Name);
-
+        Debug.Log(
+                "Start Class : " + this.GetType().Name + 
+                "Start Method : " + System.Reflection.MethodBase.GetCurrentMethod().Name);
+        Debug.Log("tilemap is empty ? : " + (tilemap == null) );
         // tilemap = ???;
     }
 

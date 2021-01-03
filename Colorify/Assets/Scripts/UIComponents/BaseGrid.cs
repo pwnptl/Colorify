@@ -7,8 +7,6 @@ public class BaseGrid : MonoBehaviour
     public const float cellSize = 0.33f;
     public string myName;
 
-    // public float cellRowSize; 
-    // public float cellColSize;
     // Start is called before the first frame update
     void Start()
     {

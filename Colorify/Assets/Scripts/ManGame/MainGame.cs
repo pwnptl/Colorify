@@ -1,5 +1,7 @@
 ﻿using static ColorifyColorEnum;
 using static Player;
+using static Constants;
+using static MainGameHelper;
 using UnityEngine;
 public sealed class MainGame
 {
@@ -13,37 +15,34 @@ public sealed class MainGame
         get { return instance; }
     }
     public static void reset()
-    {   
+    {
         instance = new MainGame();
     }
 
-
-    /// now we begin
-    private int playerSize = 2;
     private Player[] players;
     private ColorifyColorEnum[,] gameGrid;
-    private int gameGridRows = 16;
-    private int gameGridCols = 24;
     public void init()
     {
-        setGameGrid();
-        setPlayers();
+        Constants.logMethod();
+        // TODO : uncomment.
+        //setGameGrid();
+        //setPlayers();
     }
 
     private void setGameGrid()
     {
 
-        gameGrid = new ColorifyColorEnum[gameGridRows, gameGridCols];
+        gameGrid = new ColorifyColorEnum[Constants.gameGridRows, Constants.gameGridCols];
 
-        for (int i = 0; i < gameGridRows; ++i)
+        for (int i = 0; i < Constants.gameGridRows; ++i)
         {
-            for (int j = 0; i < gameGridCols; ++i)
+            for (int j = 0; i < Constants.gameGridCols; ++i)
             {
                 gameGrid[i, j] = (ColorifyColorEnum)Random.Range(1, 7);
             }
         }
         //make sure both player's colors are different.
-        while (gameGrid[0, 0] == gameGrid[gameGridRows - 1, gameGridCols - 1])
+        while (gameGrid[0, 0] == gameGrid[Constants.gameGridRows - 1, Constants.gameGridCols - 1])
             gameGrid[0, 0] = (ColorifyColorEnum)Random.Range(1, 7);
 
 
@@ -52,6 +51,6 @@ public sealed class MainGame
     {
         players = new Player[playerSize];
         players[0].Color = gameGrid[0, 0];
-        players[1].Color = gameGrid[gameGridRows - 1, gameGridCols - 1];
+        players[1].Color = gameGrid[Constants.gameGridRows - 1, Constants.gameGridCols - 1];
     }
 }
